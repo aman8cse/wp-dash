@@ -2,10 +2,71 @@
 
 > **Production-grade wholesale power trading decision-support dashboard built for UK energy utilities.**  
 > Powered by live Elexon BMRS datasets (`FUELHH` actuals and `WINDFOR` multi-vintage forecasts).
+---
+## 🚀 How to Start the Application
+
+### Option 1: Docker Compose (Recommended — Zero Setup)
+
+Run the complete full-stack environment with a single command:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/aman8cse/wp-dash
+cd wind-forecast-dashboard
+
+# 2. Start all services in the background
+docker compose up --build -d
+
+# 3. Access the application in your browser:
+#    • Frontend Terminal:  http://localhost:3000
+#    • Backend REST API:   http://localhost:8000
+#    • Interactive Docs:   http://localhost:8000/docs
+#    • Health Check Probe: http://localhost:8000/api/v1/health
+```
+
+To stop containers:
+```bash
+docker compose down
+```
 
 ---
 
-## 📌 Executive Summary for Reviewers & Recruiters
+### Option 2: Local Development Setup
+
+#### 1. Backend Setup (Python 3.11+)
+```bash
+cd backend
+
+# Create and activate a virtual environment
+python -m venv venv
+# On Windows:
+.\venv\Scripts\activate
+# On Linux/macOS:
+source venv/bin/activate
+
+# Install locked dependencies
+pip install -r requirements.txt
+
+# Start FastAPI development server with auto-reload
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+*API will run on `http://localhost:8000`. Swagger documentation available at `http://localhost:8000/docs`.*
+
+#### 2. Frontend Setup (Node.js 20+)
+```bash
+cd frontend
+
+# Install packages
+npm install
+
+# Start Vite development server
+npm run dev
+```
+*Frontend will run on `http://localhost:5173` with automatic proxying to backend on `http://localhost:8000`.*
+
+---
+
+## 📌 Executive Summary for Reviewers
 
 In the UK wholesale power market, utilities must purchase electricity on the day-ahead auction (N2EX / EPEX SPOT) to satisfy forecasted consumer demand. Because wind power is weather-dependent and highly stochastic, procurement decisions for delivery day $D$ must be submitted on day $D-1$ before the **11:00 UTC auction gate closure**.
 
@@ -22,10 +83,9 @@ Most basic forecast dashboards simply plot the latest forecast line against actu
 
 | Deliverable | Link / Access | Description |
 |---|---|---|
-| **🌐 Live Web App (Frontend)** | `https://your-vercel-deployment.vercel.app` | Production React SPA hosted on Vercel |
-| **⚙️ Live REST API (Backend)** | `https://your-heroku-deployment.herokuapp.com` | FastAPI backend on Heroku / Cloud |
-| **📖 Interactive API Docs** | `https://your-heroku-deployment.herokuapp.com/docs` | Live Swagger UI with OpenAPI specification |
-| **🎥 Video Walkthrough (10 min)** | `https://youtu.be/YOUR_UNLISTED_VIDEO_ID` | Part 1: Client Pitch (5m) + Part 2: Tech Lead Review (5m) |
+| **🌐 Live Web App (Frontend)** | `https://frontend-six-kappa-7gx3m08wxp.vercel.app/` | Production React SPA hosted on Vercel |
+| **⚙️ Live REST API (Backend)** | `https://wp-dash.onrender.com` | FastAPI backend on Render |
+| **🎥 Video Walkthrough (10 min)** | `https://youtu.be/` |
 
 ---
 
@@ -172,68 +232,7 @@ wind-forecast-dashboard/
 
 ---
 
-## 🚀 How to Start the Application
 
-### Option 1: Docker Compose (Recommended — Zero Setup)
-
-Run the complete full-stack environment with a single command:
-
-```bash
-# 1. Clone the repository
-git clone <your-repo-url>
-cd wind-forecast-dashboard
-
-# 2. Start all services in the background
-docker compose up --build -d
-
-# 3. Access the application in your browser:
-#    • Frontend Terminal:  http://localhost:3000
-#    • Backend REST API:   http://localhost:8000
-#    • Interactive Docs:   http://localhost:8000/docs
-#    • Health Check Probe: http://localhost:8000/api/v1/health
-```
-
-To stop containers:
-```bash
-docker compose down
-```
-
----
-
-### Option 2: Local Development Setup
-
-#### 1. Backend Setup (Python 3.11+)
-```bash
-cd backend
-
-# Create and activate a virtual environment
-python -m venv venv
-# On Windows:
-.\venv\Scripts\activate
-# On Linux/macOS:
-source venv/bin/activate
-
-# Install locked dependencies
-pip install -r requirements.txt
-
-# Start FastAPI development server with auto-reload
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-```
-*API will run on `http://localhost:8000`. Swagger documentation available at `http://localhost:8000/docs`.*
-
-#### 2. Frontend Setup (Node.js 20+)
-```bash
-cd frontend
-
-# Install packages
-npm install
-
-# Start Vite development server
-npm run dev
-```
-*Frontend will run on `http://localhost:5173` with automatic proxying to backend on `http://localhost:8000`.*
-
----
 
 ## 🧪 Automated Testing & Verification
 
@@ -255,32 +254,7 @@ npm run build
 
 ---
 
-## 🎥 10-Minute Video Presentation Blueprint
-
-Use this exact structure to record the required 10-minute video:
-
-### Part 1: Client & Trading Desk Pitch (5 Minutes)
-- **Role:** You are the Product Lead pitching to the Head of Power Trading at a UK utility.
-- **Narrative Flow:**
-  1. **The Core Business Problem (1 min):** Walk through the challenge of contracting electricity before the 11:00 UTC day-ahead gate closure. Explain that wind uncertainty exposes the utility to punitive cashout prices in the Balancing Mechanism.
-  2. **The Hero Dashboard (1.5 min):** Show [`http://localhost:3000`](http://localhost:3000). Highlight the live wind capacity (`19,998 MW`), Month MAE (`2,106.7 MW`), and the **Procurement Gap Chart** showing exactly how much thermal/interconnector power needs to be bought.
-  3. **The Value-at-Risk Recommendation (1 min):** Present the **Procurement Buffer Card** ($+4,375\text{ MW}$). Explain how this converts error statistics into an operational hedging instruction.
-  4. **Forecast Explorer & Timing Decisions (1.5 min):** Open the **Forecast Explorer**. Show the multi-vintage overlay for Jan 15. Demonstrate to the client why submitting orders at 10:30 UTC using the D-1 morning run reduces volume risk by up to 35% compared to D-2 estimates.
-
-### Part 2: Technical Architecture & Code Review (5 Minutes)
-- **Role:** You are presenting the technical implementation to an internal Technical Lead.
-- **Narrative Flow:**
-  1. **Architecture & Resiliency (1 min):** Explain the decoupled React SPA + FastAPI backend architecture. Explain why server-side proxying was required due to Elexon BMRS Azure API Management CORS restrictions.
-  2. **Data Pipeline & Caching (1 min):** Highlight `backend/app/core/cache.py` and `APScheduler`. Explain how pre-fetching avoids hitting Elexon rate limits (5,000 req/min) and provides instant <10ms API responses.
-  3. **Domain Cutoff Logic (1 min):** Walk through `backend/app/services/data_processor.py`. Show the `_gate_closure()` function and how it strictly filters out forecasts published after 11:00 UTC on $D-1$.
-  4. **Quantitative Rigor (1 min):** Open `backend/app/services/forecast_evaluator.py`. Explain the Skill Score formula against the 24-hour persistence baseline ($+46.8\%$) and the systematic bias decomposition.
-  5. **DevOps & Standards (1 min):** Highlight multi-stage Dockerfiles (tiny Nginx runtime image), GitHub Actions CI workflows, and 100% passing Pytest unit tests.
-
----
-
 ## 🤖 Explicit Declaration of AI Tool Usage
-
-*In compliance with Section 2 of the assignment prompt: "You are free to use AI tools to assist with building this application (please mention it explicitly in the README if you’ve used AI tools)."*
 
 - **AI Tools Used:** Development of this application was assisted by **Google DeepMind Antigravity** paired-programming agent (utilizing Claude 3.5 Sonnet and Gemini models).
 - **Scope of AI Assistance:** AI was used for project scaffolding, OpenAPI/TypeScript schema synchronization, test fixture generation, and Tailwind component design acceleration.
