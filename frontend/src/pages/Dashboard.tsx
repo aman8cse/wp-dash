@@ -91,7 +91,7 @@ export const Dashboard: React.FC = () => {
         <MetricCard
           title="Month MAE"
           value={summary?.mae ?? 0}
-          displayValue={summary ? `±${Math.round(summary.mae).toLocaleString()} MW` : '—'}
+          displayValue={summary ? `Â±${Math.round(summary.mae).toLocaleString()} MW` : 'â€”'}
           subtitle="Mean Absolute Error"
           icon={<Target className="h-4 w-4 text-wind" />}
           color="green"
@@ -100,7 +100,7 @@ export const Dashboard: React.FC = () => {
         <MetricCard
           title="MAPE"
           value={summary?.mape ?? 0}
-          displayValue={summary ? formatMAPE(summary.mape) : '—'}
+          displayValue={summary ? formatMAPE(summary.mape) : 'â€”'}
           subtitle="Relative forecast deviation"
           icon={<Gauge className="h-4 w-4 text-primary" />}
           color="blue"
@@ -109,7 +109,7 @@ export const Dashboard: React.FC = () => {
         <MetricCard
           title="Forecast Bias"
           value={summary?.bias ?? 0}
-          displayValue={summary ? `${summary.bias > 0 ? '+' : ''}${Math.round(summary.bias)} MW` : '—'}
+          displayValue={summary ? `${summary.bias > 0 ? '+' : ''}${Math.round(summary.bias)} MW` : 'â€”'}
           subtitle={summary && summary.bias > 0 ? 'Over-predicting' : 'Under-predicting'}
           icon={<Compass className="h-4 w-4 text-warning" />}
           color="amber"
@@ -118,7 +118,7 @@ export const Dashboard: React.FC = () => {
         <MetricCard
           title="P90 Risk Buffer"
           value={summary?.procurement_buffer_mw ?? 0}
-          displayValue={summary ? `+${Math.round(summary.procurement_buffer_mw).toLocaleString()} MW` : '—'}
+          displayValue={summary ? `+${Math.round(summary.procurement_buffer_mw).toLocaleString()} MW` : 'â€”'}
           subtitle="Tail risk procurement buffer"
           icon={<Zap className="h-4 w-4 text-warning" />}
           color="amber"
@@ -143,7 +143,7 @@ export const Dashboard: React.FC = () => {
               National Wind Generation: Outturn vs Day-Ahead Forecast
             </h3>
             <p className="text-xs text-text-secondary">
-              Includes ±1s (68%) and ±2s (95%) historical error confidence intervals. Drag slider below to zoom.
+              Includes Â±1s (68%) and Â±2s (95%) historical error confidence intervals. Drag slider below to zoom.
             </p>
           </div>
         </div>

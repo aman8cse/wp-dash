@@ -1,5 +1,5 @@
 """
-Data processing layer: raw Elexon JSON → cleaned pandas DataFrames.
+Data processing layer: raw Elexon JSON â†’ cleaned pandas DataFrames.
 
 Exports:
   process_actuals(raw)              -> pd.DataFrame
@@ -97,6 +97,11 @@ def process_forecasts(raw: list[dict[str, Any]]) -> pd.DataFrame:
         "settlementPeriod": "settlement_period",
     })
 
+    if "settlement_date" not in df.columns:
+        df["settlement_date"] = df["start_time"].dt.strftime("%Y-%m-%d")
+    if "settlement_period" not in df.columns:
+        df["settlement_period"] = (df["start_time"].dt.hour * 2) + (df["start_time"].dt.minute // 30) + 1
+
     df["forecast_mw"] = pd.to_numeric(df["forecast_mw"], errors="coerce")
     df = df.dropna(subset=["start_time", "publish_time", "forecast_mw"])
     df = df.sort_values(["start_time", "publish_time"]).reset_index(drop=True)
@@ -125,7 +130,7 @@ def get_day_ahead_forecasts(forecasts_df: pd.DataFrame) -> pd.DataFrame:
     For each startTime, select the LATEST publishTime that is still before
     the day-ahead gate closure (delivery_date - 1 day @ 11:00 UTC).
 
-    Returns one row per startTime — the forecast a day-ahead trader would use.
+    Returns one row per startTime â€” the forecast a day-ahead trader would use.
     """
     if forecasts_df.empty:
         return forecasts_df.copy()
@@ -195,9 +200,12 @@ def get_vintage_forecasts(forecasts_df: pd.DataFrame, target_date: str) -> list[
         lead_hours = (first_delivery - pub_time).total_seconds() / 3600.0
 
         forecasts_list = (
-            grp[["start_time", "settlement_period", "forecast_mw"]]
+            grp[["start_time", "publish_time", "settlement_date", "settlement_period", "forecast_mw"]]
             .sort_values("start_time")
-            .assign(start_time=lambda d: d["start_time"].dt.isoformat())
+            .assign(
+                start_time=lambda d: d["start_time"].dt.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                publish_time=lambda d: d["publish_time"].dt.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            )
             .to_dict("records")
         )
 

@@ -1,5 +1,5 @@
 """
-GET /api/v1/actuals — returns processed wind actuals for Jan 2026 from cache.
+GET /api/v1/actuals â€” returns processed wind actuals for Jan 2026 from cache.
 """
 
 from fastapi import APIRouter, HTTPException

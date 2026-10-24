@@ -1,9 +1,9 @@
-import React from 'react';
 import { cn } from '../../utils/cn';
 
 interface LoadingSpinnerProps {
   size?: 'sm' | 'md' | 'lg';
   text?: string;
+  message?: string;
   className?: string;
   fullScreen?: boolean;
 }
@@ -17,9 +17,11 @@ const sizeMap = {
 export function LoadingSpinner({
   size = 'md',
   text,
+  message,
   className,
   fullScreen = false,
 }: LoadingSpinnerProps) {
+  const displayText = message || text;
   const spinner = (
     <div className={cn('flex flex-col items-center justify-center gap-3', className)}>
       <div
@@ -31,8 +33,8 @@ export function LoadingSpinner({
         role="status"
         aria-label="Loading"
       />
-      {text && (
-        <p className="text-sm text-text-secondary animate-pulse">{text}</p>
+      {displayText && (
+        <p className="text-sm text-text-secondary animate-pulse">{displayText}</p>
       )}
     </div>
   );
@@ -46,12 +48,4 @@ export function LoadingSpinner({
   }
 
   return spinner;
-}
-
-export function PageLoader({ text = 'Loading data…' }: { text?: string }) {
-  return (
-    <div className="flex h-64 w-full items-center justify-center">
-      <LoadingSpinner size="lg" text={text} />
-    </div>
-  );
 }

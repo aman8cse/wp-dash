@@ -42,7 +42,7 @@ export const ProcurementGapChart: React.FC<ProcurementGapChartProps> = ({
   }, [data, assumedDemandMW, procurementBufferMW]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload }: any) => {
     if (!active || !payload?.length) return null;
     const item = payload[0]?.payload;
     if (!item) return null;

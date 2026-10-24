@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldAlert, Info } from 'lucide-react';
 import { formatMW } from '../../utils/formatters';
@@ -72,7 +71,7 @@ export function ProcurementBufferCard({
             <div className="rounded-lg border border-border bg-surface/50 p-3">
               <p className="text-xs text-text-muted mb-1">P90 Error Threshold</p>
               <p className="text-sm font-semibold text-text-primary">
-                {isLoading ? '…' : formatMW(p90Error)}
+                {isLoading ? 'â€¦' : formatMW(p90Error)}
               </p>
             </div>
             <div className="rounded-lg border border-border bg-surface/50 p-3">
@@ -85,7 +84,7 @@ export function ProcurementBufferCard({
             <Info className="h-4 w-4 text-text-muted mt-0.5 shrink-0" />
             <p className="text-xs text-text-muted">
               This buffer covers forecast errors at the P90 confidence level. For higher
-              risk tolerance, consider using the P50 level (±1σ). Review daily as conditions change.
+              risk tolerance, consider using the P50 level (Â±1Ïƒ). Review daily as conditions change.
             </p>
           </div>
         </div>

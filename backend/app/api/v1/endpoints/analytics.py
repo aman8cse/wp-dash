@@ -1,8 +1,8 @@
 """
 Analytics endpoints:
 
-  GET /api/v1/analytics          — full AnalyticsResponse (all metrics)
-  GET /api/v1/analytics/merged   — merged actuals + day-ahead forecasts
+  GET /api/v1/analytics          â€” full AnalyticsResponse (all metrics)
+  GET /api/v1/analytics/merged   â€” merged actuals + day-ahead forecasts
 """
 
 from __future__ import annotations

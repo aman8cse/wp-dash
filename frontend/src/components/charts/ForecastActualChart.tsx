@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import {
   ComposedChart,
   Line,
@@ -159,7 +159,7 @@ export function ForecastActualChart({ data, confidenceBands }: ForecastActualCha
           fill="#3b82f6"
           fillOpacity={0.06}
           stroke="none"
-          name="±2σ band"
+          name="Â±2Ïƒ band"
           legendType="none"
           isAnimationActive={false}
         />
@@ -178,7 +178,7 @@ export function ForecastActualChart({ data, confidenceBands }: ForecastActualCha
           fill="#3b82f6"
           fillOpacity={0.14}
           stroke="none"
-          name="±1σ band"
+          name="Â±1Ïƒ band"
           legendType="none"
           isAnimationActive={false}
         />

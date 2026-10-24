@@ -1,9 +1,9 @@
 """
 Forecast endpoints:
 
-  GET /api/v1/forecasts/day-ahead    — decision-relevant day-ahead forecasts
-  GET /api/v1/forecasts/vintage      — all vintages for a specific date
-  GET /api/v1/forecasts/latest       — live latest forecast from Elexon
+  GET /api/v1/forecasts/day-ahead    â€” decision-relevant day-ahead forecasts
+  GET /api/v1/forecasts/vintage      â€” all vintages for a specific date
+  GET /api/v1/forecasts/latest       â€” live latest forecast from Elexon
 """
 
 from __future__ import annotations
@@ -141,13 +141,12 @@ async def get_vintage(
 
 @router.get(
     "/latest",
-    response_model=list[dict],
     summary="Get the latest available wind forecast from Elexon (live)",
 )
-async def get_latest_forecast() -> list[dict]:
+async def get_latest_forecast() -> dict:
     """
     Calls the Elexon live endpoint /forecast/generation/wind/latest and
-    returns the raw records. This is not cached — it reflects real-time data.
+    returns normalized records with forecast_mw.
     """
     async with ElexonClient() as client:
         records = await client.fetch_latest_forecast()
@@ -158,5 +157,16 @@ async def get_latest_forecast() -> list[dict]:
             detail="Could not retrieve latest forecast from Elexon. The API may be unavailable.",
         )
 
-    logger.info("forecasts.latest.ok", count=len(records))
-    return records
+    data = [
+        {
+            "start_time": r.get("startTime"),
+            "publish_time": r.get("publishTime"),
+            "settlement_date": r.get("settlementDate") or "",
+            "settlement_period": r.get("settlementPeriod") or 1,
+            "forecast_mw": float(r.get("generation") or 0.0),
+        }
+        for r in records
+    ]
+
+    logger.info("forecasts.latest.ok", count=len(data))
+    return {"data": data}

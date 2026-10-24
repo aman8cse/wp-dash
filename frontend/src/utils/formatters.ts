@@ -4,7 +4,7 @@ export const formatMW = (mw: number): string =>
   `${Math.round(mw).toLocaleString('en-GB')} MW`;
 
 export const formatMAE = (mw: number): string =>
-  `±${Math.round(mw).toLocaleString('en-GB')} MW`;
+  `Â±${Math.round(mw).toLocaleString('en-GB')} MW`;
 
 export const formatMAPE = (pct: number): string => `${pct.toFixed(1)}%`;
 

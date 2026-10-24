@@ -55,7 +55,7 @@ app = FastAPI(
     title=settings.app_name,
     version=settings.app_version,
     description=(
-        "Wind Power Forecast Dashboard API — proxies Elexon BMRS data, "
+        "Wind Power Forecast Dashboard API â€” proxies Elexon BMRS data, "
         "computes day-ahead accuracy metrics for UK energy market traders."
     ),
     docs_url="/docs",

@@ -6,7 +6,7 @@ import { VintageOverlayChart } from '../components/charts/VintageOverlayChart';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ErrorState } from '../components/ui/ErrorState';
 import { JAN_2026_DATES, VINTAGE_COLORS } from '../constants';
-import { formatMW, formatDate } from '../utils/formatters';
+import { formatDate } from '../utils/formatters';
 
 export const ForecastExplorer: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<string>('2026-01-15');

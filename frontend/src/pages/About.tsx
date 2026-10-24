@@ -6,8 +6,6 @@ import {
   Cpu,
   Layers,
   CheckCircle2,
-  ExternalLink,
-  Code2,
   FileCheck,
 } from 'lucide-react';
 
@@ -33,7 +31,7 @@ export const About: React.FC = () => {
         </h3>
         <p className="text-sm text-text-secondary leading-relaxed">
           The client is an energy utility in the United Kingdom responsible for purchasing electricity from the wholesale market (N2EX / EPEX SPOT) to meet customer demand.
-          Because renewable generation—specifically wind—is stochastic and weather-dependent, power purchase decisions for delivery day <code className="text-xs bg-background px-1.5 py-0.5 rounded border border-border">D</code> must be executed on day <code className="text-xs bg-background px-1.5 py-0.5 rounded border border-border">D-1</code> before the 11:00 UTC auction gate closure.
+          Because renewable generationâ€”specifically windâ€”is stochastic and weather-dependent, power purchase decisions for delivery day <code className="text-xs bg-background px-1.5 py-0.5 rounded border border-border">D</code> must be executed on day <code className="text-xs bg-background px-1.5 py-0.5 rounded border border-border">D-1</code> before the 11:00 UTC auction gate closure.
         </p>
         <p className="text-sm text-text-secondary leading-relaxed">
           Under-estimating wind leads to over-procuring expensive thermal generation; over-estimating wind leaves the utility short, triggering punitive imbalance cashout charges through the Balancing Mechanism.
@@ -137,10 +135,10 @@ export const About: React.FC = () => {
         </p>
         <div className="p-4 rounded-lg border border-border bg-background text-xs text-text-secondary space-y-2">
           <p>
-            • <strong>AI Assistance:</strong> Development of this codebase was accelerated using Google DeepMind's Antigravity paired-programming coding agent (utilizing Claude 3.5 Sonnet / Gemini models) for project scaffolding, OpenAPI contract synchronization, and unit test generation.
+            â€¢ <strong>AI Assistance:</strong> Development of this codebase was accelerated using Google DeepMind's Antigravity paired-programming coding agent (utilizing Claude 3.5 Sonnet / Gemini models) for project scaffolding, OpenAPI contract synchronization, and unit test generation.
           </p>
           <p>
-            • <strong>Architectural Ownership:</strong> All quantitative algorithms (skill score vs persistence, P90 Value-at-Risk procurement buffer, and N2EX 11:00 UTC D-1 gate cutoff logic) were designed to address the specific domain realities of the UK electricity balancing mechanism.
+            â€¢ <strong>Architectural Ownership:</strong> All quantitative algorithms (skill score vs persistence, P90 Value-at-Risk procurement buffer, and N2EX 11:00 UTC D-1 gate cutoff logic) were designed to address the specific domain realities of the UK electricity balancing mechanism.
           </p>
         </div>
       </div>

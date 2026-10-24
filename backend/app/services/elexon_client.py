@@ -12,6 +12,7 @@ Uses httpx.AsyncClient with a single retry on 5xx responses.
 from __future__ import annotations
 
 import time
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 import httpx
@@ -147,8 +148,8 @@ class ElexonClient:
         records = await self._get(
             "/datasets/FUELHH/stream",
             params={
-                "from": from_dt,
-                "to": to_dt,
+                "publishDateTimeFrom": from_dt,
+                "publishDateTimeTo": to_dt,
                 "fuelType": "WIND",
             },
         )
@@ -180,13 +181,19 @@ class ElexonClient:
         Fetch the latest available wind generation forecast from Elexon's live endpoint.
         """
         logger.info("elexon.fetch_latest_forecast.start")
-        records = await self._get("/forecast/generation/wind/latest")
+        now = datetime.now(timezone.utc)
+        from_str = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+        to_str = (now + timedelta(days=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        records = await self._get(
+            "/forecast/generation/wind/latest",
+            params={"from": from_str, "to": to_str},
+        )
         logger.info("elexon.fetch_latest_forecast.done", records=len(records))
         return records
 
     async def ping(self) -> bool:
         """
-        Quick reachability check — fetches a tiny slice of data.
+        Quick reachability check â€” fetches a tiny slice of data.
         Returns True if Elexon responds with any HTTP 2xx.
         """
         assert self._client is not None, "Use ElexonClient as async context manager"

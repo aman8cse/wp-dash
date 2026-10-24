@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
             </span>
           </h1>
           <p className="text-xs text-text-secondary">
-            Day-Ahead Wholesale Market Decision Support • Jan 2026 Outturn & Forecasts
+            Day-Ahead Wholesale Market Decision Support â€¢ Jan 2026 Outturn & Forecasts
           </p>
         </div>
       </div>

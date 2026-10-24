@@ -6,7 +6,6 @@ import {
   Calendar,
   Layers,
   Award,
-  Sparkles,
 } from 'lucide-react';
 import { useAnalytics } from '../hooks/useAnalytics';
 import { MetricCard } from '../components/ui/MetricCard';
@@ -15,7 +14,7 @@ import { RollingMAEChart } from '../components/charts/RollingMAEChart';
 import { HourlyHeatmapChart } from '../components/charts/HourlyHeatmapChart';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ErrorState } from '../components/ui/ErrorState';
-import { formatMW, formatMAPE, formatSkillScore, formatDate } from '../utils/formatters';
+import { formatMW, formatSkillScore, formatDate } from '../utils/formatters';
 
 export const AccuracyReport: React.FC = () => {
   const { data: analytics, isLoading, error, refetch } = useAnalytics();
@@ -60,7 +59,7 @@ export const AccuracyReport: React.FC = () => {
         <MetricCard
           title="Mean Absolute Error (MAE)"
           value={summary?.mae ?? 0}
-          displayValue={summary ? `±${Math.round(summary.mae).toLocaleString()} MW` : '—'}
+          displayValue={summary ? `Â±${Math.round(summary.mae).toLocaleString()} MW` : 'â€”'}
           subtitle="Average absolute error volume"
           icon={<Target className="h-4 w-4 text-primary" />}
           color="blue"
@@ -68,7 +67,7 @@ export const AccuracyReport: React.FC = () => {
         <MetricCard
           title="Root Mean Sq Error (RMSE)"
           value={summary?.rmse ?? 0}
-          displayValue={summary ? `${Math.round(summary.rmse).toLocaleString()} MW` : '—'}
+          displayValue={summary ? `${Math.round(summary.rmse).toLocaleString()} MW` : 'â€”'}
           subtitle="Penalizes large forecast spikes"
           icon={<BarChart2 className="h-4 w-4 text-purple-forecast" />}
           color="purple"
@@ -76,7 +75,7 @@ export const AccuracyReport: React.FC = () => {
         <MetricCard
           title="Skill Score vs Persistence"
           value={summary?.skill_score ?? 0}
-          displayValue={summary ? formatSkillScore(summary.skill_score) : '—'}
+          displayValue={summary ? formatSkillScore(summary.skill_score) : 'â€”'}
           subtitle="Skill over naive 24h lag baseline"
           icon={<Award className="h-4 w-4 text-wind" />}
           color="green"
@@ -84,7 +83,7 @@ export const AccuracyReport: React.FC = () => {
         <MetricCard
           title="P90 Extreme Error"
           value={summary?.p90_error ?? 0}
-          displayValue={summary ? `${Math.round(summary.p90_error).toLocaleString()} MW` : '—'}
+          displayValue={summary ? `${Math.round(summary.p90_error).toLocaleString()} MW` : 'â€”'}
           subtitle="90th percentile of absolute error"
           icon={<Target className="h-4 w-4 text-warning" />}
           color="amber"
@@ -116,7 +115,7 @@ export const AccuracyReport: React.FC = () => {
               </span>
             </div>
             <div className="text-2xl font-bold font-mono text-text-primary">
-              {summary ? `${summary.systematic_bias > 0 ? '+' : ''}${Math.round(summary.systematic_bias)} MW` : '—'}
+              {summary ? `${summary.systematic_bias > 0 ? '+' : ''}${Math.round(summary.systematic_bias)} MW` : 'â€”'}
             </div>
             <p className="text-xs text-text-secondary leading-relaxed">
               Consistently present across periods. The trading desk can subtract this offset from the vendor forecast to instantly improve day-ahead position balance.
@@ -133,7 +132,7 @@ export const AccuracyReport: React.FC = () => {
               </span>
             </div>
             <div className="text-2xl font-bold font-mono text-text-primary">
-              {summary ? `±${Math.round(summary.random_error)} MW` : '—'}
+              {summary ? `Â±${Math.round(summary.random_error)} MW` : 'â€”'}
             </div>
             <p className="text-xs text-text-secondary leading-relaxed">
               Standard deviation of unpredictable meteorologic fluctuation. Must be hedged using intraday flexibility, demand response, or quick-start thermal units.

@@ -25,10 +25,10 @@ def _make_dummy_merged_df() -> pd.DataFrame:
         actual = 5000.0 + (p * 50)
         forecast = actual + (100.0 if p % 2 == 0 else -50.0)
         records.append({
-            "startTime": pd.Timestamp(f"2026-01-01 {hour:02d}:{minute:02d}:00", tz="UTC"),
-            "publishTime": pd.Timestamp("2025-12-31 08:30:00", tz="UTC"),
-            "settlementDate": "2026-01-01",
-            "settlementPeriod": p,
+            "start_time": pd.Timestamp(f"2026-01-01 {hour:02d}:{minute:02d}:00", tz="UTC"),
+            "publish_time": pd.Timestamp("2025-12-31 08:30:00", tz="UTC"),
+            "settlement_date": "2026-01-01",
+            "settlement_period": p,
             "actual_mw": actual,
             "forecast_mw": forecast,
             "error_mw": forecast - actual,

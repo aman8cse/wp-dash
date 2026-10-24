@@ -7,13 +7,24 @@ from app.core.config import get_settings
 def setup_logging() -> None:
     """Configure structlog for JSON output in production and colored console in dev."""
     settings = get_settings()
+    log_level = logging.DEBUG if settings.debug else logging.INFO
+
+    logging.basicConfig(
+        format="%(message)s",
+        stream=sys.stdout,
+        level=log_level,
+    )
 
     shared_processors: list = [
         structlog.contextvars.merge_contextvars,
+        structlog.stdlib.filter_by_level,
         structlog.stdlib.add_logger_name,
         structlog.stdlib.add_log_level,
+        structlog.stdlib.PositionalArgumentsFormatter(),
         structlog.processors.TimeStamper(fmt="iso"),
         structlog.processors.StackInfoRenderer(),
+        structlog.processors.format_exc_info,
+        structlog.processors.UnicodeDecoder(),
     ]
 
     if settings.debug:
@@ -24,25 +35,14 @@ def setup_logging() -> None:
     else:
         # Production: JSON output
         processors = shared_processors + [
-            structlog.processors.dict_tracebacks,
             structlog.processors.JSONRenderer(),
         ]
 
     structlog.configure(
         processors=processors,
-        wrapper_class=structlog.make_filtering_bound_logger(
-            logging.DEBUG if settings.debug else logging.INFO
-        ),
-        context_class=dict,
-        logger_factory=structlog.PrintLoggerFactory(),
+        wrapper_class=structlog.stdlib.BoundLogger,
+        logger_factory=structlog.stdlib.LoggerFactory(),
         cache_logger_on_first_use=True,
-    )
-
-    # Also configure stdlib logging so uvicorn logs go through structlog
-    logging.basicConfig(
-        format="%(message)s",
-        stream=sys.stdout,
-        level=logging.DEBUG if settings.debug else logging.INFO,
     )
 
 

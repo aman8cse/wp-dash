@@ -34,7 +34,7 @@ export function getPeriodLabel(period: number): string {
   const endHours = Math.floor(endMinutes / 60) % 24;
   const endMins = endMinutes % 60;
   const end = `${String(endHours).padStart(2, '0')}:${String(endMins).padStart(2, '0')}`;
-  return `${start}–${end}`;
+  return `${start}â€“${end}`;
 }
 
 /**

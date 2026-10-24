@@ -48,7 +48,7 @@ def compute_summary_metrics(merged_df: pd.DataFrame) -> dict:
     bias = float(errors.mean())
     p90_error = float(abs_errors.quantile(0.90))
 
-    # MAPE — guard against zero actuals
+    # MAPE â€” guard against zero actuals
     nonzero_mask = actuals != 0
     if nonzero_mask.sum() > 0:
         mape = float((abs_errors[nonzero_mask] / actuals[nonzero_mask]).mean() * 100)
@@ -56,7 +56,7 @@ def compute_summary_metrics(merged_df: pd.DataFrame) -> dict:
         mape = float("nan")
 
     # Persistence baseline: for each period, the actual 48 periods (24 hours) ago
-    # Half-hourly data → 48 periods = 24 hours
+    # Half-hourly data â†’ 48 periods = 24 hours
     persistence_errors = _persistence_baseline_errors(merged_df)
     mae_persistence = float(persistence_errors.abs().mean()) if not persistence_errors.empty else mae
     skill_score = 1.0 - (mae / mae_persistence) if mae_persistence > 0 else 0.0
@@ -117,7 +117,7 @@ def _persistence_baseline_errors(merged_df: pd.DataFrame) -> pd.Series:
 
 def compute_hourly_heatmap(merged_df: pd.DataFrame) -> list[dict]:
     """
-    Group by hour of day (0–23) and compute MAE per hour.
+    Group by hour of day (0â€“23) and compute MAE per hour.
     """
     if merged_df.empty:
         return []
@@ -160,7 +160,8 @@ def compute_daily_metrics(merged_df: pd.DataFrame) -> list[dict]:
                 "mae": g["abs_error"].mean(),
                 "bias": g["error_mw"].mean(),
                 "rmse": daily_rmse(g["error_mw"]),
-            })
+            }),
+            include_groups=False,
         )
         .reset_index()
     )
@@ -241,7 +242,7 @@ def compute_error_distribution(merged_df: pd.DataFrame, bins: int = 30) -> list[
 
 def compute_confidence_bands(merged_df: pd.DataFrame) -> dict:
     """
-    Compute ±1σ, ±2σ bands and P10/P90 percentiles of error_mw.
+    Compute Â±1Ïƒ, Â±2Ïƒ bands and P10/P90 percentiles of error_mw.
     """
     if merged_df.empty:
         return {"sigma_1": 0.0, "sigma_2": 0.0, "p10": 0.0, "p90": 0.0}

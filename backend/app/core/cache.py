@@ -169,7 +169,7 @@ async def _refresh_data() -> None:
 
     except Exception as exc:  # noqa: BLE001
         logger.error("cache.refresh.error", error=str(exc), exc_info=True)
-        # Do not clear existing cached data on failure — keep serving stale data
+        # Do not clear existing cached data on failure â€” keep serving stale data
 
 
 # ---------------------------------------------------------------------------
