@@ -6,7 +6,6 @@ import {
   Cpu,
   Layers,
   CheckCircle2,
-  FileCheck,
 } from 'lucide-react';
 
 export const About: React.FC = () => {
