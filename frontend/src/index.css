@@ -64,3 +64,18 @@ html.light .text-text-muted {
 ::-webkit-scrollbar-thumb:hover {
   background: #4b5563;
 }
+
+@keyframes breathe {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.4);
+        opacity: 0.5;
+    }
+}
+
+.animate-breathe {
+    animation: breathe 2s ease-in-out infinite;
+}

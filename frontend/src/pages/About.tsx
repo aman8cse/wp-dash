@@ -123,25 +123,6 @@ export const About: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* AI Tool Usage Disclosure (Required by Assignment Guidelines) */}
-      <div className="rounded-xl border border-border bg-surface p-6 shadow-sm space-y-3">
-        <h3 className="text-base font-semibold text-text-primary flex items-center gap-2">
-          <FileCheck className="h-4 w-4 text-wind" />
-          Assignment Compliance & AI Tooling Disclosure
-        </h3>
-        <p className="text-sm text-text-secondary leading-relaxed">
-          In strict accordance with Section 2 of the problem guidelines (<em>"You are free to use AI tools to assist with building this application; please mention it explicitly in the README if you have used AI tools"</em>):
-        </p>
-        <div className="p-4 rounded-lg border border-border bg-background text-xs text-text-secondary space-y-2">
-          <p>
-            • <strong>AI Assistance:</strong> Development of this codebase was accelerated using Google DeepMind's Antigravity paired-programming coding agent (utilizing Claude 3.5 Sonnet / Gemini models) for project scaffolding, OpenAPI contract synchronization, and unit test generation.
-          </p>
-          <p>
-            • <strong>Architectural Ownership:</strong> All quantitative algorithms (skill score vs persistence, P90 Value-at-Risk procurement buffer, and N2EX 11:00 UTC D-1 gate cutoff logic) were designed to address the specific domain realities of the UK electricity balancing mechanism.
-          </p>
-        </div>
-      </div>
     </div>
   );
 };
