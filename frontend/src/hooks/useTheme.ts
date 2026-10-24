@@ -12,7 +12,7 @@ function getInitialTheme(): Theme {
     // localStorage not available
   }
   // Default to dark (trading terminal aesthetic)
-  return 'dark';
+  return 'light';
 }
 
 function applyTheme(theme: Theme) {
