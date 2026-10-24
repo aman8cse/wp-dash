@@ -115,9 +115,9 @@ export const ProcurementGapChart: React.FC<ProcurementGapChartProps> = ({
             <Legend verticalAlign="top" height={36} wrapperStyle={{ fontSize: '12px' }} />
             <ReferenceLine
               y={assumedDemandMW}
-              stroke="#9ca3af"
+              stroke={CHART_COLORS.axis}
               strokeDasharray="4 4"
-              label={{ value: 'Demand Baseline', fill: '#9ca3af', fontSize: 11, position: 'insideTopRight' }}
+              label={{ value: 'Demand Baseline', fill: CHART_COLORS.axis, fontSize: 11, position: 'insideTopRight' }}
             />
             <Area
               type="monotone"

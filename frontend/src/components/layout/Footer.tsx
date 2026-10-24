@@ -9,8 +9,7 @@ export const Footer: FC = () => {
                 </h1>
 
                 <span
-                    className="mx-3 h-2.5 w-2.5 rounded-full shrink-0 animate-breathe"
-                    style={{ backgroundColor: "#32af26" }}
+                    className="mx-3 h-2.5 w-2.5 rounded-full shrink-0 animate-breathe bg-wind"
                 />
 
                 <a

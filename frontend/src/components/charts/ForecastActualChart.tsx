@@ -156,7 +156,7 @@ export function ForecastActualChart({ data, confidenceBands }: ForecastActualCha
         {/* 2-sigma band */}
         <Area
           dataKey="upper_2sigma"
-          fill="#3b82f6"
+          fill={CHART_COLORS.forecast}
           fillOpacity={0.06}
           stroke="none"
           name="Â±2Ïƒ band"
@@ -165,7 +165,7 @@ export function ForecastActualChart({ data, confidenceBands }: ForecastActualCha
         />
         <Area
           dataKey="lower_2sigma"
-          fill="#0a0e1a"
+          fill={CHART_COLORS.surface}
           fillOpacity={1}
           stroke="none"
           legendType="none"
@@ -175,7 +175,7 @@ export function ForecastActualChart({ data, confidenceBands }: ForecastActualCha
         {/* 1-sigma band */}
         <Area
           dataKey="upper_1sigma"
-          fill="#3b82f6"
+          fill={CHART_COLORS.forecast}
           fillOpacity={0.14}
           stroke="none"
           name="Â±1Ïƒ band"
@@ -184,7 +184,7 @@ export function ForecastActualChart({ data, confidenceBands }: ForecastActualCha
         />
         <Area
           dataKey="lower_1sigma"
-          fill="#0a0e1a"
+          fill={CHART_COLORS.surface}
           fillOpacity={1}
           stroke="none"
           legendType="none"
@@ -221,7 +221,7 @@ export function ForecastActualChart({ data, confidenceBands }: ForecastActualCha
           dataKey="start_time"
           height={28}
           stroke={CHART_COLORS.grid}
-          fill="#111827"
+          fill={CHART_COLORS.surface}
           travellerWidth={8}
           tickFormatter={(v: string) => {
             try {

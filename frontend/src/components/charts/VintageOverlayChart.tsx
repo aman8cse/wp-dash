@@ -105,7 +105,7 @@ export const VintageOverlayChart: React.FC<VintageOverlayChartProps> = ({
 
           {/* Vintage lines */}
           {vintages.map((v) => {
-            const color = VINTAGE_COLORS[v.publish_label] || '#94a3b8';
+            const color = VINTAGE_COLORS[v.publish_label] || CHART_COLORS.axis;
             return (
               <Line
                 key={v.publish_label}

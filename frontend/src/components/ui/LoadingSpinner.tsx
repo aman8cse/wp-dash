@@ -29,7 +29,6 @@ export function LoadingSpinner({
           'animate-spin rounded-full border-transparent border-t-primary',
           sizeMap[size]
         )}
-        style={{ borderColor: 'transparent', borderTopColor: '#3b82f6' }}
         role="status"
         aria-label="Loading"
       />

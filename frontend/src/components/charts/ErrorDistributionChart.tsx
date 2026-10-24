@@ -53,7 +53,7 @@ export const ErrorDistributionChart: React.FC<ErrorDistributionChartProps> = ({ 
           />
           <YAxis stroke={CHART_COLORS.axis} tick={{ fontSize: 11 }} />
           <Tooltip content={<CustomTooltip />} />
-          <ReferenceLine x={0} stroke="#ffffff" strokeWidth={2} strokeDasharray="2 2" />
+          <ReferenceLine x={0} stroke={CHART_COLORS.axis} strokeWidth={2} strokeDasharray="2 2" />
           <Bar dataKey="count" radius={[4, 4, 0, 0]}>
             {data.map((entry, index) => (
               <Cell

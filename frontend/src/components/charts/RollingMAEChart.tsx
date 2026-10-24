@@ -55,11 +55,11 @@ export const RollingMAEChart: React.FC<RollingMAEChartProps> = ({ data, overallM
           {overallMAE && (
             <ReferenceLine
               y={overallMAE}
-              stroke="#6b7280"
+              stroke={CHART_COLORS.axis}
               strokeDasharray="4 4"
               label={{
                 value: `Month MAE: ${Math.round(overallMAE)} MW`,
-                fill: '#9ca3af',
+                fill: CHART_COLORS.axis,
                 fontSize: 10,
                 position: 'insideTopRight',
               }}

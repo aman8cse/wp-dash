@@ -16,8 +16,8 @@ const variantStyles: Record<BadgeVariant, string> = {
   success: 'bg-wind/20 text-wind border-wind/30',
   warning: 'bg-warning/20 text-warning border-warning/30',
   danger: 'bg-danger/20 text-danger border-danger/30',
-  info: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-  neutral: 'bg-gray-500/20 text-gray-400 border-gray-500/30',
+  info: 'bg-primary/20 text-primary border-primary/30',
+  neutral: 'bg-text-muted/15 text-text-secondary border-border',
 };
 
 const dotColors: Record<BadgeVariant, string> = {
@@ -25,8 +25,8 @@ const dotColors: Record<BadgeVariant, string> = {
   success: 'bg-wind',
   warning: 'bg-warning',
   danger: 'bg-danger',
-  info: 'bg-blue-400',
-  neutral: 'bg-gray-400',
+  info: 'bg-primary',
+  neutral: 'bg-text-muted',
 };
 
 export function Badge({

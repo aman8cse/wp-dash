@@ -22,10 +22,10 @@ export const HourlyHeatmapChart: React.FC<HourlyHeatmapChartProps> = ({ data }) 
 
   const getColor = (mae: number) => {
     const ratio = mae / maxMae;
-    if (ratio > 0.75) return '#ef4444'; // Red (high error)
-    if (ratio > 0.5) return '#f59e0b';  // Amber
-    if (ratio > 0.3) return '#3b82f6';  // Blue
-    return '#10b981';                   // Green (low error)
+    if (ratio > 0.75) return CHART_COLORS.error;
+    if (ratio > 0.5) return CHART_COLORS.d2;
+    if (ratio > 0.3) return CHART_COLORS.forecast;
+    return CHART_COLORS.actual;
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

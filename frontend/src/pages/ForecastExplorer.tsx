@@ -5,7 +5,7 @@ import { useActuals } from '../hooks/useActuals';
 import { VintageOverlayChart } from '../components/charts/VintageOverlayChart';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ErrorState } from '../components/ui/ErrorState';
-import { JAN_2026_DATES, VINTAGE_COLORS } from '../constants';
+import { CHART_COLORS, JAN_2026_DATES, VINTAGE_COLORS } from '../constants';
 import { formatDate } from '../utils/formatters';
 
 export const ForecastExplorer: React.FC = () => {
@@ -160,7 +160,7 @@ export const ForecastExplorer: React.FC = () => {
               <tbody className="divide-y divide-border">
                 {vintageData.vintages.map((v) => {
                   const isDecision = v.publish_label.includes('D-1 Morning') || v.publish_label.includes('Day-Ahead');
-                  const color = VINTAGE_COLORS[v.publish_label] || '#94a3b8';
+                  const color = VINTAGE_COLORS[v.publish_label] || CHART_COLORS.axis;
 
                   return (
                     <tr

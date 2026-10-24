@@ -1,15 +1,16 @@
 export const CHART_COLORS = {
-  actual: '#10b981',       // electric green
-  forecast: '#3b82f6',     // electric blue
-  error: '#ef4444',        // red
-  band1: '#3b82f620',      // blue transparent (1 sigma)
-  band2: '#3b82f610',      // blue more transparent (2 sigma)
-  grid: '#1f2937',
-  axis: '#6b7280',
-  d2: '#f59e0b',           // amber for D-2 vintage
-  d1evening: '#8b5cf6',   // purple for D-1 evening
-  d1morning: '#3b82f6',   // blue for D-1 morning
-  intraday: '#10b981',    // green for intraday
+  actual: 'rgb(var(--color-wind))',
+  forecast: 'rgb(var(--color-primary))',
+  error: 'rgb(var(--color-danger))',
+  band1: 'rgb(var(--color-primary) / 0.12)',
+  band2: 'rgb(var(--color-primary) / 0.06)',
+  grid: 'rgb(var(--color-chart-grid))',
+  axis: 'rgb(var(--color-chart-axis))',
+  surface: 'rgb(var(--color-surface))',
+  d2: 'rgb(var(--color-warning))',
+  d1evening: 'rgb(var(--color-purple-forecast))',
+  d1morning: 'rgb(var(--color-primary))',
+  intraday: 'rgb(var(--color-wind))',
 };
 
 export const JAN_2026_DATES = Array.from({ length: 31 }, (_, i) => {
@@ -18,10 +19,10 @@ export const JAN_2026_DATES = Array.from({ length: 31 }, (_, i) => {
 });
 
 export const VINTAGE_COLORS: Record<string, string> = {
-  'D-2': '#f59e0b',
-  'D-1 Evening': '#8b5cf6',
-  'D-1 Morning': '#3b82f6',
-  'Intraday': '#10b981',
+  'D-2': CHART_COLORS.d2,
+  'D-1 Evening': CHART_COLORS.d1evening,
+  'D-1 Morning': CHART_COLORS.d1morning,
+  'Intraday': CHART_COLORS.intraday,
 };
 
 export const MAE_THRESHOLDS = {
@@ -30,9 +31,9 @@ export const MAE_THRESHOLDS = {
 };
 
 export const MAE_COLORS = {
-  low: '#10b981',
-  medium: '#f59e0b',
-  high: '#ef4444',
+  low: CHART_COLORS.actual,
+  medium: CHART_COLORS.d2,
+  high: CHART_COLORS.error,
 };
 
 export const UK_AVG_DEMAND_MW = 35000;

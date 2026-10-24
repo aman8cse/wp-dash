@@ -27,7 +27,7 @@ const borderColorMap: Record<BorderColor, string> = {
   amber: 'border-l-warning',
   red: 'border-l-danger',
   purple: 'border-l-purple-forecast',
-  gray: 'border-l-gray-500',
+  gray: 'border-l-text-muted',
 };
 
 const trendIconMap: Record<Trend, React.ReactNode> = {
@@ -99,7 +99,7 @@ export function MetricCard({
       whileHover={{ y: -2, transition: { duration: 0.2 } }}
       className={cn(
         'relative overflow-hidden rounded-xl border-l-4 border border-border',
-        'bg-surface dark:bg-surface',
+        'bg-surface',
         'p-5 shadow-lg',
         'transition-shadow hover:shadow-xl hover:shadow-primary/5',
         borderColorMap[color],
@@ -121,7 +121,7 @@ export function MetricCard({
             <div className="h-8 w-32 rounded-md bg-border animate-pulse" />
           ) : (
             <div className="flex items-baseline gap-1.5">
-              <span className="text-2xl font-bold text-text-primary dark:text-text-primary tabular-nums">
+              <span className="text-2xl font-bold text-text-primary tabular-nums">
                 {formattedAnimated}
               </span>
               {unit && (
