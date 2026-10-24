@@ -62,10 +62,10 @@ export const Dashboard: React.FC = () => {
       {/* Top Banner / Heading */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-text-primary">
+          <h2 className="text-lg font-bold tracking-tight text-text-primary sm:text-xl">
             Day-Ahead Wind Procurement Overview
           </h2>
-          <p className="text-sm text-text-secondary">
+          <p className="mt-1 text-sm text-text-secondary">
             Evaluation of National Grid ESO wind forecasts vs outturn across 1,488 half-hour settlement periods (Jan 2026).
           </p>
         </div>
@@ -78,7 +78,7 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* KPI Cards Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5">
         <MetricCard
           title="Latest Forecast"
           value={latestMw}
@@ -123,6 +123,7 @@ export const Dashboard: React.FC = () => {
           icon={<Zap className="h-4 w-4 text-warning" />}
           color="amber"
           isLoading={analyticsLoading}
+          className="col-span-2 sm:col-span-1"
         />
       </div>
 
@@ -136,7 +137,7 @@ export const Dashboard: React.FC = () => {
       )}
 
       {/* Main Time-Series Forecast vs Actual Chart */}
-      <div className="rounded-xl border border-border bg-surface p-5 shadow-sm space-y-3">
+      <div className="rounded-xl border border-border bg-surface p-3 shadow-sm sm:p-5 sm:space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-3">
           <div>
             <h3 className="text-base font-semibold text-text-primary">
@@ -163,7 +164,7 @@ export const Dashboard: React.FC = () => {
       {/* Bottom Grid: Procurement Gap & Vintage Accuracy */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left: Procurement Gap Chart */}
-        <div className="rounded-xl border border-border bg-surface p-5 shadow-sm flex flex-col justify-between">
+        <div className="rounded-xl border border-border bg-surface p-3 shadow-sm sm:p-5 sm:flex sm:flex-col sm:justify-between">
           <div className="border-b border-border pb-3 mb-3">
             <h3 className="text-base font-semibold text-text-primary">
               Wholesale Procurement Gap Analysis
@@ -182,7 +183,7 @@ export const Dashboard: React.FC = () => {
         </div>
 
         {/* Right: Vintage Accuracy Breakdown */}
-        <div className="rounded-xl border border-border bg-surface p-5 shadow-sm flex flex-col justify-between">
+        <div className="rounded-xl border border-border bg-surface p-3 shadow-sm sm:p-5 sm:flex sm:flex-col sm:justify-between">
           <div className="border-b border-border pb-3 mb-3">
             <h3 className="text-base font-semibold text-text-primary">
               Forecast Accuracy by Lead Time (Vintage)

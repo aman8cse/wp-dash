@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import type { MergedDataPoint } from '../../types';
 import { CHART_COLORS } from '../../constants';
-import { formatMW, formatDate } from '../../utils/formatters';
+import { formatMW, formatDate, formatShortDate } from '../../utils/formatters';
 
 interface ProcurementGapChartProps {
   data: MergedDataPoint[];
@@ -101,10 +101,12 @@ export const ProcurementGapChart: React.FC<ProcurementGapChartProps> = ({
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke={CHART_COLORS.grid} />
             <XAxis
-              dataKey="displayDate"
+              dataKey="start_time"
               stroke={CHART_COLORS.axis}
-              tick={{ fontSize: 11 }}
-              interval={Math.floor(chartData.length / 8)}
+              tick={{ fontSize: 10 }}
+              tickFormatter={(date: string) => formatShortDate(date)}
+              interval="preserveStartEnd"
+              minTickGap={24}
             />
             <YAxis
               stroke={CHART_COLORS.axis}

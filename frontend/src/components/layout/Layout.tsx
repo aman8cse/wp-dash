@@ -9,11 +9,11 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-background text-text-primary flex flex-col transition-colors">
+    <div className="min-h-screen overflow-x-hidden bg-background text-text-primary flex flex-col transition-colors">
       <Header />
-      <div className="flex flex-1">
+      <div className="flex flex-1 flex-col lg:flex-row">
         <Sidebar />
-        <main className="flex-1 p-6 overflow-y-auto max-w-7xl mx-auto w-full">
+        <main className="mx-auto w-full min-w-0 max-w-7xl flex-1 p-4 sm:p-6">
           {children}
         </main>
       </div>

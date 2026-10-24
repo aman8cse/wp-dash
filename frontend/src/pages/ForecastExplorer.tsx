@@ -42,7 +42,7 @@ export const ForecastExplorer: React.FC = () => {
       </div>
 
       {/* Date Selector Pills */}
-      <div className="rounded-xl border border-border bg-surface p-4 space-y-3">
+      <div className="rounded-xl border border-border bg-surface p-3 sm:p-4 sm:space-y-3">
         <div className="flex items-center gap-2 text-xs font-semibold text-text-secondary uppercase tracking-wider">
           <Calendar className="h-4 w-4 text-primary" />
           Select Delivery Day (January 2026)
@@ -69,7 +69,7 @@ export const ForecastExplorer: React.FC = () => {
       </div>
 
       {/* Main Chart Card */}
-      <div className="rounded-xl border border-border bg-surface p-5 shadow-sm space-y-4">
+      <div className="rounded-xl border border-border bg-surface p-3 shadow-sm sm:p-5 sm:space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-3">
           <div>
             <h3 className="text-base font-semibold text-text-primary">
@@ -116,7 +116,7 @@ export const ForecastExplorer: React.FC = () => {
       </div>
 
       {/* Strategic Value Insight Card */}
-      <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 flex items-start gap-4 text-xs">
+      <div className="flex items-start gap-3 rounded-xl border border-primary/20 bg-primary/5 p-3 text-xs sm:gap-4 sm:p-4">
         <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
           <Info className="h-5 w-5" />
         </div>
@@ -136,7 +136,7 @@ export const ForecastExplorer: React.FC = () => {
       {/* Vintages Breakdown Table */}
       {vintageData?.vintages && vintageData.vintages.length > 0 && (
         <div className="rounded-xl border border-border bg-surface overflow-hidden shadow-sm">
-          <div className="p-4 border-b border-border bg-surface-elevated flex items-center justify-between">
+          <div className="flex flex-col gap-1 border-b border-border bg-surface-elevated p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
             <h4 className="text-sm font-semibold text-text-primary flex items-center gap-2">
               <Clock className="h-4 w-4 text-primary" />
               Available Forecast Runs for {selectedDate}
@@ -147,7 +147,7 @@ export const ForecastExplorer: React.FC = () => {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-xs text-left">
+            <table className="w-full min-w-[760px] text-left text-xs">
               <thead className="bg-background text-text-secondary uppercase tracking-wider text-[11px] border-b border-border">
                 <tr>
                   <th className="py-3 px-4">Vintage Classification</th>

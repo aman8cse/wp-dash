@@ -63,6 +63,14 @@ body {
   color: rgb(var(--color-text-primary));
 }
 
+.mobile-nav-scroll {
+  scrollbar-width: none;
+}
+
+.mobile-nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 /* Custom terminal scrollbars */
 ::-webkit-scrollbar {
   width: 6px;

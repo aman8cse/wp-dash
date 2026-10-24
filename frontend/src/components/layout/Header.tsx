@@ -9,27 +9,28 @@ export const Header: React.FC = () => {
   const { data: health, isLoading } = useHealth();
 
   return (
-    <header className="h-16 border-b border-border bg-surface px-6 flex items-center justify-between sticky top-0 z-30 transition-colors">
-      <div className="flex items-center gap-3">
-        <div className="h-9 w-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+    <header className="sticky top-0 z-30 flex min-h-16 items-center justify-between gap-3 border-b border-border bg-surface px-3 py-2 transition-colors sm:px-6">
+      <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-primary/20 bg-primary/10 text-primary">
           <Wind className="h-5 w-5" />
         </div>
-        <div>
-          <h1 className="text-base font-bold text-text-primary flex items-center gap-2">
-            UK Wind Power Procurement Terminal
-            <span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+        <div className="min-w-0">
+          <h1 className="flex items-center gap-2 truncate text-xs font-bold text-text-primary sm:text-base">
+            <span className="sm:hidden">UK Wind Procurement</span>
+            <span className="hidden sm:inline">UK Wind Power Procurement Terminal</span>
+            <span className="hidden shrink-0 rounded-full border border-primary/20 bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary sm:inline">
               Elexon BMRS
             </span>
           </h1>
-          <p className="text-xs text-text-secondary">
+          <p className="hidden text-xs text-text-secondary md:block">
             Day-Ahead Wholesale Market Decision Support • Jan 2026 Outturn & Forecasts
           </p>
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex shrink-0 items-center gap-2 sm:gap-4">
         {/* Data Status Indicator */}
-        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-background text-xs">
+        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-background text-xs">
           {isLoading ? (
             <RefreshCw className="h-3.5 w-3.5 animate-spin text-text-secondary" />
           ) : health?.cache_populated ? (

@@ -23,7 +23,7 @@ export const About: React.FC = () => {
       </div>
 
       {/* Problem Statement Card */}
-      <div className="rounded-xl border border-border bg-surface p-6 shadow-sm space-y-3">
+      <div className="rounded-xl border border-border bg-surface p-4 shadow-sm sm:p-6 sm:space-y-3">
         <h3 className="text-base font-semibold text-text-primary flex items-center gap-2">
           <Layers className="h-4 w-4 text-primary" />
           The Client Challenge: Day-Ahead Market Procurement
@@ -39,7 +39,7 @@ export const About: React.FC = () => {
       </div>
 
       {/* Data Pipeline & Architecture */}
-      <div className="rounded-xl border border-border bg-surface p-6 shadow-sm space-y-4">
+      <div className="rounded-xl border border-border bg-surface p-4 shadow-sm sm:p-6 sm:space-y-4">
         <h3 className="text-base font-semibold text-text-primary flex items-center gap-2">
           <Server className="h-4 w-4 text-primary" />
           Data Sources & Ingestion Pipeline
@@ -82,7 +82,7 @@ export const About: React.FC = () => {
       </div>
 
       {/* Decision-Relevant Selection Methodology */}
-      <div className="rounded-xl border border-border bg-surface p-6 shadow-sm space-y-3">
+      <div className="rounded-xl border border-border bg-surface p-4 shadow-sm sm:p-6 sm:space-y-3">
         <h3 className="text-base font-semibold text-text-primary flex items-center gap-2">
           <CheckCircle2 className="h-4 w-4 text-wind" />
           Day-Ahead Gate Closure Methodology
@@ -102,7 +102,7 @@ export const About: React.FC = () => {
       </div>
 
       {/* Technical Stack */}
-      <div className="rounded-xl border border-border bg-surface p-6 shadow-sm space-y-3">
+      <div className="rounded-xl border border-border bg-surface p-4 shadow-sm sm:p-6 sm:space-y-3">
         <h3 className="text-base font-semibold text-text-primary flex items-center gap-2">
           <Cpu className="h-4 w-4 text-primary" />
           Technology Architecture

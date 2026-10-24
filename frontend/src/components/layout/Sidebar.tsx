@@ -12,13 +12,13 @@ const navItems = [
 
 export const Sidebar: React.FC = () => {
   return (
-    <aside className="w-64 border-r border-border bg-surface flex flex-col justify-between p-4 min-h-[calc(100vh-4rem)]">
-      <div className="space-y-6">
+    <aside className="flex w-full shrink-0 flex-col border-b border-border bg-surface p-2 lg:min-h-[calc(100vh-4rem)] lg:w-64 lg:justify-between lg:border-b-0 lg:border-r lg:p-4">
+      <div className="lg:space-y-6">
         <div className="space-y-1">
-          <p className="px-3 text-[11px] font-semibold text-text-muted tracking-wider uppercase">
+          <p className="hidden px-3 text-[11px] font-semibold uppercase tracking-wider text-text-muted lg:block">
             Market Views
           </p>
-          <nav className="space-y-1">
+          <nav className="mobile-nav-scroll flex gap-1 overflow-x-auto lg:flex-col lg:space-y-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -28,15 +28,15 @@ export const Sidebar: React.FC = () => {
                   end={item.to === '/'}
                   className={({ isActive }) =>
                     cn(
-                      'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
+                      'flex shrink-0 items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-xs font-medium transition-colors sm:text-sm lg:justify-start',
                       isActive
                         ? 'bg-primary/10 text-primary border border-primary/20'
                         : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated'
                     )
                   }
                 >
-                  <Icon className="h-4 w-4" />
-                  {item.label}
+                  <Icon className="h-4 w-4 shrink-0" />
+                  <span className="whitespace-nowrap">{item.label}</span>
                 </NavLink>
               );
             })}
@@ -44,7 +44,7 @@ export const Sidebar: React.FC = () => {
         </div>
 
         {/* Market Window Context Box */}
-        <div className="rounded-xl border border-border bg-background p-3.5 space-y-2 text-xs">
+        <div className="mt-6 hidden rounded-xl border border-border bg-background p-3.5 text-xs lg:block lg:space-y-2">
           <div className="flex items-center gap-2 font-semibold text-text-primary">
             <Calendar className="h-4 w-4 text-primary" />
             Market Context
@@ -64,7 +64,7 @@ export const Sidebar: React.FC = () => {
       </div>
 
       {/* Footer Info */}
-      <div className="border-t border-border pt-4 text-xs text-text-muted space-y-1">
+      <div className="hidden border-t border-border pt-4 text-xs text-text-muted lg:block lg:space-y-1">
         <p className="font-semibold text-text-secondary">Elexon BMRS Interface</p>
         <p className="text-[11px]">FUELHH & WINDFOR Streams</p>
       </div>

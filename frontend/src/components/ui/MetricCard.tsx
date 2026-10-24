@@ -100,7 +100,7 @@ export function MetricCard({
       className={cn(
         'relative overflow-hidden rounded-xl border-l-4 border border-border',
         'bg-surface',
-        'p-5 shadow-lg',
+        'p-3 shadow-lg sm:p-5',
         'transition-shadow hover:shadow-xl hover:shadow-primary/5',
         borderColorMap[color],
         className
@@ -121,7 +121,7 @@ export function MetricCard({
             <div className="h-8 w-32 rounded-md bg-border animate-pulse" />
           ) : (
             <div className="flex items-baseline gap-1.5">
-              <span className="text-2xl font-bold text-text-primary tabular-nums">
+              <span className="text-xl font-bold text-text-primary tabular-nums sm:text-2xl">
                 {formattedAnimated}
               </span>
               {unit && (

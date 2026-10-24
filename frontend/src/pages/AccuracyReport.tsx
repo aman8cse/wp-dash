@@ -55,7 +55,7 @@ export const AccuracyReport: React.FC = () => {
       </div>
 
       {/* Metrics Row 1: Primary Indicators */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         <MetricCard
           title="Mean Absolute Error (MAE)"
           value={summary?.mae ?? 0}
@@ -91,7 +91,7 @@ export const AccuracyReport: React.FC = () => {
       </div>
 
       {/* Error Decomposition: Systematic Bias vs Random Error */}
-      <div className="rounded-xl border border-border bg-surface p-5 shadow-sm space-y-4">
+      <div className="rounded-xl border border-border bg-surface p-3 shadow-sm sm:p-5 sm:space-y-4">
         <div className="border-b border-border pb-3">
           <h3 className="text-base font-semibold text-text-primary flex items-center gap-2">
             <Layers className="h-4 w-4 text-primary" />
@@ -102,7 +102,7 @@ export const AccuracyReport: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="rounded-lg border border-border bg-background p-4 space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs text-text-secondary uppercase tracking-wider font-semibold">
@@ -143,7 +143,7 @@ export const AccuracyReport: React.FC = () => {
 
       {/* Row: Error Distribution & 7-Day Rolling Trend */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="rounded-xl border border-border bg-surface p-5 shadow-sm flex flex-col justify-between">
+        <div className="rounded-xl border border-border bg-surface p-3 shadow-sm sm:p-5 sm:flex sm:flex-col sm:justify-between">
           <div className="border-b border-border pb-3 mb-3">
             <h3 className="text-base font-semibold text-text-primary">
               Forecast Error Distribution
@@ -157,7 +157,7 @@ export const AccuracyReport: React.FC = () => {
           ) : null}
         </div>
 
-        <div className="rounded-xl border border-border bg-surface p-5 shadow-sm flex flex-col justify-between">
+        <div className="rounded-xl border border-border bg-surface p-3 shadow-sm sm:p-5 sm:flex sm:flex-col sm:justify-between">
           <div className="border-b border-border pb-3 mb-3">
             <h3 className="text-base font-semibold text-text-primary">
               7-Day Rolling MAE Trend
@@ -176,7 +176,7 @@ export const AccuracyReport: React.FC = () => {
       </div>
 
       {/* Diurnal Pattern / Hourly Heatmap */}
-      <div className="rounded-xl border border-border bg-surface p-5 shadow-sm space-y-3">
+      <div className="rounded-xl border border-border bg-surface p-3 shadow-sm sm:p-5 sm:space-y-3">
         <div className="border-b border-border pb-3">
           <h3 className="text-base font-semibold text-text-primary">
             Hourly Error Profile (Diurnal Sensitivity)
@@ -193,7 +193,7 @@ export const AccuracyReport: React.FC = () => {
       {/* Daily Breakdown Table */}
       {analytics?.daily_metrics && analytics.daily_metrics.length > 0 && (
         <div className="rounded-xl border border-border bg-surface overflow-hidden shadow-sm">
-          <div className="p-4 border-b border-border bg-surface-elevated flex items-center justify-between">
+          <div className="flex flex-col gap-1 border-b border-border bg-surface-elevated p-3 sm:flex-row sm:items-center sm:justify-between sm:p-4">
             <h4 className="text-sm font-semibold text-text-primary flex items-center gap-2">
               <Calendar className="h-4 w-4 text-primary" />
               Daily Accuracy Breakdown (January 1 - 31, 2026)
@@ -204,7 +204,7 @@ export const AccuracyReport: React.FC = () => {
           </div>
 
           <div className="overflow-x-auto max-h-96">
-            <table className="w-full text-xs text-left">
+            <table className="w-full min-w-[640px] text-left text-xs">
               <thead className="bg-background text-text-secondary uppercase tracking-wider text-[11px] border-b border-border sticky top-0 z-10">
                 <tr>
                   <th className="py-3 px-4">Market Date</th>
