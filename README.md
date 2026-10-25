@@ -85,7 +85,8 @@ Most basic forecast dashboards simply plot the latest forecast line against actu
 |---|---|---|
 | **🌐 Live Web App (Frontend)** | `https://frontend-six-kappa-7gx3m08wxp.vercel.app/` | Production React SPA hosted on Vercel |
 | **⚙️ Live REST API (Backend)** | `https://wp-dash.onrender.com` | FastAPI backend on Render |
-| **🎥 Video Walkthrough (10 min)** | `https://youtu.be/` |
+| **⚙️ Live REST API Docs (Open API)** | `https://wp-dash.onrender.com/docs` | API Docs | Open API |
+| **🎥 Video Walkthrough (<10 min)** | `https://youtu.be/vi8La0kFp5A` |
 
 ---
 
